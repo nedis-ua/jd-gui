@@ -11,6 +11,7 @@ import org.jd.gui.api.API;
 import org.jd.gui.api.feature.ContainerEntryGettable;
 import org.jd.gui.api.feature.UriGettable;
 import org.jd.gui.api.model.Container;
+import org.jd.gui.view.component.FormattedXmlFilePage;
 import org.jd.gui.view.component.XmlFilePage;
 import org.jd.gui.view.data.TreeNodeBean;
 
@@ -39,7 +40,7 @@ public class XmlFileTreeNodeFactoryProvider extends TextFileTreeNodeFactoryProvi
         @Override
         @SuppressWarnings("unchecked")
         public <T extends JComponent & UriGettable> T createPage(API api) {
-            return (T)new XmlFilePage(api, entry);
+            return (T)new FormattedXmlFilePage(api, entry);
         }
     }
 }

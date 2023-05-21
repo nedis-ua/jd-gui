@@ -34,10 +34,13 @@ public class XmlFilePage extends TypeReferencePage implements UriGettable, Index
     protected Collection<Future<Indexes>> collectionOfFutureIndexes;
 
     public XmlFilePage(API api, Container.Entry entry) {
+        // Load content file
+        this(api, entry, TextReader.getText(entry.getInputStream()));
+    }
+
+    public XmlFilePage(API api, Container.Entry entry, String text) {
         this.api = api;
         this.entry = entry;
-        // Load content file
-        String text = TextReader.getText(entry.getInputStream());
         // Create hyperlinks
         Pattern pattern = Pattern.compile("(?s)<\\s*bean[^<]+class\\s*=\\s*\"([^\"]*)\"");
         Matcher matcher = pattern.matcher(textArea.getText());
